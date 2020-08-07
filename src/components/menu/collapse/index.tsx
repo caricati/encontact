@@ -1,13 +1,40 @@
-import React from 'react'
+import React, { ReactNode, useState } from 'react'
+import styled from 'styled-components'
 
-type MenuItemProps = { children: Element }
+const ItemsContainer = styled.div`
+  display: block;
 
-export function MenuItem({ children }: MenuItemProps) {
-  return <li>{ children }</li>
+  & > a {
+    display: block;
+  }
+`
+
+const MenuContainer = styled.div`
+  padding: 10px;
+`
+
+type MenuItemProps = { children: ReactNode, title: string }
+
+export function MenuItem({ children, title }: MenuItemProps) {
+  const [isOpen, setOpen] = useState(false)
+  return (
+    <div>
+      <button type="button" onClick={() => setOpen(!isOpen)}>
+        {title}
+      </button>
+      {isOpen && (
+        <ItemsContainer>
+          {children}
+        </ItemsContainer>
+      )}
+    </div>
+  )
 }
 
-type MenuCollapseProps = { children: Element }
+type MenuCollapseProps = { children: ReactNode[], defaultActived: number }
 
-export default function MenuCollapse({ children }: MenuCollapseProps) {
-  return <div>{ children }</div>
+export default function MenuCollapse({ children, defaultActived }: MenuCollapseProps) {
+  return (
+    <MenuContainer>{ children }</MenuContainer>
+  )
 }
