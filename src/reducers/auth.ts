@@ -1,6 +1,3 @@
-export const LOGIN: string = 'LOGIN'
-export const LOGOUT: string = 'LOGOUT'
-
 export enum Types {
   LOGIN_SUCCESS = 'LOGIN_SUCCESS',
   LOGIN_ERROR = 'LOGIN_ERROR',

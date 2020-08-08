@@ -3,9 +3,9 @@ import styled from 'styled-components'
 
 import Button from '../../components/button'
 import InputSearch from '../../components/input/search-bar'
-import MenuCollapse, { MenuItems, Item } from '../../components/menu/collapse'
 import MessageItem from './message-item'
 import ProfileOptions from './profile-options'
+import AsideMenu from './aside-menu'
 
 const Container = styled.section`
   height: 100vh;
@@ -51,16 +51,7 @@ function App() {
           <ProfileOptions />
           <p>dropdown</p>
         </header>
-        <MenuCollapse>
-          <MenuItems title="Conta 1">
-            <Item title="Caixa de entrada" icon="inbox" />
-            <Item title="Caixa de saída" icon="outbox" />
-          </MenuItems>
-          <MenuItems title="Conta 2">
-            <Item title="Caixa de entrada" icon="inbox" />
-            <Item title="Caixa de saída" icon="outbox" />
-          </MenuItems>
-        </MenuCollapse>
+        <AsideMenu />
       </Aside>
       <Wrapper>
         <HeaderSearch>

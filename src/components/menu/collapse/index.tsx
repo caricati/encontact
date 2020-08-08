@@ -4,13 +4,22 @@ import { Link } from 'react-router-dom'
 
 import ArrowIcon from './down-arrow.svg'
 import inbox from './inbox.svg'
+import star from './star.svg'
+import trash from './trash.svg'
 import outbox from './outbox.svg'
 
 type typeIconMap = {
   [key: string]: string
 }
 
-const iconMap: typeIconMap = { inbox, outbox }
+const iconMap: typeIconMap = {
+  'Caixa de entrada': inbox,
+  Inbox: inbox,
+  Entrada: inbox,
+  'Caixa de saída': outbox,
+  Vip: star,
+  Lixo: trash,
+}
 
 const ItemsContainer = styled.div`
   display: block;
@@ -89,7 +98,9 @@ export function Item({ title, icon }: { title: string; icon: string }) {
   return (
     <CollapseItem>
       <Link to="/">
-        {icon && <img src={iconMap[icon]} alt={iconMap[icon]} />}
+        {icon && iconMap[icon] && (
+          <img src={iconMap[icon]} alt={iconMap[icon]} />
+        )}
         {title}
       </Link>
     </CollapseItem>
