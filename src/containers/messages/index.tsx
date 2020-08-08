@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Button from '../../components/button'
-import Photo from '../../components/photo'
 import InputSearch from '../../components/input/search-bar'
 import MenuCollapse, { MenuItems, Item } from '../../components/menu/collapse'
 import MessageItem from './message-item'
+import ProfileOptions from './profile-options'
 
 const Container = styled.section`
   height: 100vh;
@@ -48,7 +48,7 @@ function App() {
     <Container>
       <Aside>
         <header>
-          <Photo size={40} user={{ initials: 'OA' }} onClick={() => console.log('enter here')} />
+          <ProfileOptions />
           <p>dropdown</p>
         </header>
         <MenuCollapse>

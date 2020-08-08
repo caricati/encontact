@@ -4,18 +4,18 @@ import { ThemeProvider } from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import theme from './theme'
-import Messages from './containers/messages'
+import Containers from './containers'
 import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme} >
+    <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Messages />
+        <Containers />
       </BrowserRouter>
     </ThemeProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 )
 
 // If you want your app to work offline and load faster, you can change
