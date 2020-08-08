@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+
+import Button from '../../components/button'
 import Photo from '../../components/photo'
 import InputSearch from '../../components/input/search-bar'
-import MenuCollapse, { MenuItem } from '../../components/menu/collapse'
+import MenuCollapse, { MenuItems, Item } from '../../components/menu/collapse'
 import MessageItem from './message-item'
-import { Link } from 'react-router-dom'
 
 const Container = styled.section`
   height: 100vh;
@@ -28,7 +29,13 @@ const Wrapper = styled.section``
 
 const HeaderSearch = styled.section``
 
-const Options = styled.div``
+const Options = styled.div`
+  padding: 1rem;
+
+  & > *:not(:first-child) {
+    margin-left: 0.75rem;
+  }
+`
 
 const MessageList = styled.ul`
   list-style: none;
@@ -41,18 +48,18 @@ function App() {
     <Container>
       <Aside>
         <header>
-          <Photo />
+          <Photo size={40} user={{ initials: 'OA' }} onClick={() => console.log('enter here')} />
           <p>dropdown</p>
         </header>
-        <MenuCollapse defaultActived={0}>
-          <MenuItem title="Conta 1">
-            <Link to="/">Caixa de entrada</Link>
-            <Link to="/">Caixa de saída</Link>
-          </MenuItem>
-          <MenuItem title="Conta 2">
-            <Link to="/">Caixa de entrada</Link>
-            <Link to="/">Caixa de saída</Link>
-          </MenuItem>
+        <MenuCollapse>
+          <MenuItems title="Conta 1">
+            <Item title="Caixa de entrada" icon="inbox" />
+            <Item title="Caixa de saída" icon="outbox" />
+          </MenuItems>
+          <MenuItems title="Conta 2">
+            <Item title="Caixa de entrada" icon="inbox" />
+            <Item title="Caixa de saída" icon="outbox" />
+          </MenuItems>
         </MenuCollapse>
       </Aside>
       <Wrapper>
@@ -60,9 +67,9 @@ function App() {
           <InputSearch />
         </HeaderSearch>
         <Options>
-          <button type="button">Atribuir</button>
-          <button type="button">Arquivar</button>
-          <button type="button">Agendar</button>
+          <Button>Atribuir</Button>
+          <Button>Arquivar</Button>
+          <Button>Agendar</Button>
         </Options>
         <MessageList>
           <MessageItem />
