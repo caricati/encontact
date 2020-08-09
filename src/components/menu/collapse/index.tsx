@@ -94,10 +94,10 @@ export function MenuItems({ children, title }: MenuItemsProps) {
   )
 }
 
-export function Item({ title, icon }: { title: string; icon: string }) {
+export function Item({ title, icon, to }: { title: string; icon: string, to: string }) {
   return (
     <CollapseItem>
-      <Link to="/">
+      <Link to={to}>
         {icon && iconMap[icon] && (
           <img src={iconMap[icon]} alt={iconMap[icon]} />
         )}

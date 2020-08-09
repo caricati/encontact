@@ -30,6 +30,7 @@ type Props = {
   className?: string
   block?: boolean
   primary?: boolean
+  onClick?(e: React.MouseEvent<HTMLButtonElement, MouseEvent>): void
 }
 
 export default function Btn({
@@ -38,6 +39,7 @@ export default function Btn({
   className,
   block,
   primary,
+  onClick,
 }: Props) {
   return (
     <Button
@@ -45,6 +47,7 @@ export default function Btn({
       isBlock={block || false}
       isPrimary={primary || false}
       className={className}
+      onClick={onClick}
     >
       {children}
     </Button>

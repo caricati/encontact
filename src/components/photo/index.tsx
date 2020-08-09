@@ -13,6 +13,7 @@ const colors = [
 const Container = styled.div<{ customSize: number }>`
   width: ${(props) => props.customSize}px;
   height: ${(props) => props.customSize}px;
+  font-size: ${(props) => props.customSize < 21 ? 7 : 16}px;
   background-color: ${colors[0]};
   display: flex;
   justify-content: center;

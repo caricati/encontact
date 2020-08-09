@@ -18,7 +18,7 @@ export default function AsideMenu() {
       {message.menu.map((item: any) => (
         <MenuItems title={item.name} key={item.id}>
           {item.subMenus.map((sub: any) => (
-            <Item key={sub.id} title={sub.name} icon={sub.name} />
+            <Item key={sub.id} title={sub.name} icon={sub.name} to={`/messages/${sub.id}`} />
           ))}
         </MenuItems>
       ))}
