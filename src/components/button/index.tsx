@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 
 const Button = styled.button<{ isBlock: boolean; isPrimary: boolean }>`
+  color: ${(props) => props.theme.color.font};
   padding: 0.625rem 1rem;
   cursor: pointer;
   background-color: ${(props) => props.theme.color.gray};

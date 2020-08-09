@@ -1,20 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { ThemeProvider } from 'styled-components'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
-import theme from './theme'
 import Containers from './containers'
 import * as serviceWorker from './serviceWorker'
 import './i18n'
 
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Containers />
-      </BrowserRouter>
-    </ThemeProvider>
+    <BrowserRouter>
+      <Containers />
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),
 )

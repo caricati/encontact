@@ -10,6 +10,7 @@ import useStore from '../../store/use-store'
 import ProfileOptions from './profile-options'
 import InputSearch from '../../components/input/search-bar'
 import SwitchLanguage from '../../components/switch-language'
+import SwitchThemeMode from '../../components/switch-theme-mode'
 import { useArchiveMessages } from '../../actions/message'
 
 const Container = styled.section`
@@ -20,22 +21,26 @@ const Container = styled.section`
 `
 
 const Aside = styled.aside`
-  background-color: #f9f9f9;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-right: 1px solid ${props => props.theme.color.gray};
 
   & > header {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     padding: 1rem;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid ${props => props.theme.color.gray};
   }
 `
 
 const Wrapper = styled.section``
 
-const HeaderSearch = styled.section``
+const HeaderSearch = styled.section`
+  padding: 1.25rem;
+`
 
 const Options = styled.div`
-  padding: 1rem;
+  padding: 1.25rem;
 
   & > *:not(:first-child) {
     margin-left: 0.75rem;
@@ -54,7 +59,10 @@ function App() {
       <Aside>
         <header>
           <ProfileOptions />
-          <SwitchLanguage />
+          <div>
+            <SwitchThemeMode />
+            <SwitchLanguage />
+          </div>
         </header>
         <AsideMenu />
       </Aside>

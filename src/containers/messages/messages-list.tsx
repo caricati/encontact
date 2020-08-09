@@ -7,8 +7,19 @@ import useStore from '../../store/use-store'
 import { useFetchMessages, useArchiveMessageListIds } from '../../actions/message'
 
 const Item = styled.li`
-  padding: 1rem;
+  padding: 1.25rem;
   display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+  h2 {
+    font-size: 1.0625rem;
+    margin-bottom: 3px;
+  }
+
+  p {
+    font-size: 0.875rem;
+    margin-bottom: 2px;
+  }
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.1);
@@ -93,6 +104,7 @@ const MessageList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 `
 
 export default function MessageItem() {

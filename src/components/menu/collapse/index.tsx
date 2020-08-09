@@ -42,7 +42,6 @@ const CollapseButton = styled.button<{ isOpen: boolean }>`
   background-color: transparent;
 
   img {
-    fill: red;
     width: 10px;
     margin-right: 10px;
     transform: rotate(${(props) => (props.isOpen ? '0' : '-90deg')});
