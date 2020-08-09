@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Switch, Route } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 import AsideMenu from './aside-menu'
 import MessagesList from './messages-list'
@@ -8,6 +9,7 @@ import Button from '../../components/button'
 import useStore from '../../store/use-store'
 import ProfileOptions from './profile-options'
 import InputSearch from '../../components/input/search-bar'
+import SwitchLanguage from '../../components/switch-language'
 import { useArchiveMessages } from '../../actions/message'
 
 const Container = styled.section`
@@ -41,14 +43,18 @@ const Options = styled.div`
 `
 
 function App() {
-  const { store: { message } } = useStore()
+  const { t } = useTranslation()
   const archiveMessages = useArchiveMessages()
+  const {
+    store: { message },
+  } = useStore()
+  
   return (
     <Container>
       <Aside>
         <header>
           <ProfileOptions />
-          <p>dropdown</p>
+          <SwitchLanguage />
         </header>
         <AsideMenu />
       </Aside>
@@ -58,18 +64,16 @@ function App() {
         </HeaderSearch>
         {message && (
           <Options>
-            <Button>Atribuir</Button>
-            <Button onClick={() => {
-              console.log(message.archiveByIds)
-              console.log(archiveMessages)
-              archiveMessages(message.archiveByIds)
-            }}>Arquivar</Button>
-            <Button>Agendar</Button>
+            <Button>{t('toAssign')}</Button>
+            <Button onClick={() => archiveMessages(message.archiveByIds)}>
+              {t('archive')}
+            </Button>
+            <Button>{t('schedule')}</Button>
           </Options>
         )}
         <Switch>
           <Route path="/messages/:id" component={MessagesList} />
-          <Route render={() => <p>Select a item from menu</p>} />
+          <Route render={() => <p>{t('selectTheMenuItem')}</p>} />
         </Switch>
       </Wrapper>
     </Container>

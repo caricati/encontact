@@ -105,12 +105,12 @@ export default function MessageItem() {
 
   useEffect(() => {
     fetchMessages({ id })
-  }, [fetchMessages, id])
+    return () => archiveMessageListIds([])
+  }, [fetchMessages, archiveMessageListIds, id])
 
   const isItemChecked = (item: string) => message.archiveByIds.includes(item)
 
   const handleCheck = (item: string) => {
-    console.log(isItemChecked(item), [...message.archiveByIds, item])
     if (isItemChecked(item)) {
       archiveMessageListIds(message.archiveByIds.filter((val: string) => val !== item))
     } else {

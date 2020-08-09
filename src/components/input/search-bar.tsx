@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
 
 const InputSearch = styled.input`
   width: 100%;
@@ -8,5 +9,6 @@ const InputSearch = styled.input`
 `
 
 export default function SearchBar() {
-  return <InputSearch type="text" placeholder="Pesquisar" />
+  const { t } = useTranslation()
+  return <InputSearch type="text" placeholder={t('search')} />
 }
