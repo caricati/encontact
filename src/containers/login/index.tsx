@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next'
+
 import Input from '../../components/input/text'
 import Button from '../../components/button'
-import { useMakeLogin } from '../../actions/auth'
 import useStore from '../../store/use-store'
+import { useMakeLogin } from '../../actions/auth'
 
 const Wrapper = styled.section`
   height: 100vh;
@@ -37,6 +39,7 @@ const ErrorMessage = styled.p`
 `
 
 export default function Login() {
+  const { t } = useTranslation()
   const { store } = useStore()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -49,19 +52,19 @@ export default function Login() {
           action(username, password)
         }}
       >
-        <h1>Login</h1>
+        <h1>{t('login')}</h1>
         {store.auth.hasError && (
-          <ErrorMessage>Invalid username or password</ErrorMessage>
+          <ErrorMessage>{t('invalidAccountMessage')}</ErrorMessage>
         )}
         <InputText
-          title="Username"
+          title={t('username')}
           name="username"
           value={username}
           onChange={(e) => setUsername(e.currentTarget.value)}
         />
         <InputText
           type="password"
-          title="Password"
+          title={t('password')}
           name="password"
           value={password}
           onChange={(e) => setPassword(e.currentTarget.value)}
