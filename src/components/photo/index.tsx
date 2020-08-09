@@ -1,20 +1,30 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const colors = [
-  '#1abc9c',
-  '#3498db',
-  '#9b59b6',
-  '#e74c3c',
-  '#e67e22',
-  '#f1c40f',
-]
+const getColorByInitials = (initials: string): string => {
+  const letter = initials.charAt(0).toUpperCase()
+  if (letter < 'F') {
+    return '#706fd3'
+  }
+  if (letter < 'K') {
+    return '#33d9b2'
+  }
+  if (letter < 'P') {
+    return '#ff793f'
+  }
+  if (letter < 'U') {
+    return '#ff5252'
+  }
+  return '#ffb142'
+}
 
-const Container = styled.div<{ customSize: number }>`
+const Container = styled.div<{ customSize: number; customColor: string }>`
   width: ${(props) => props.customSize}px;
   height: ${(props) => props.customSize}px;
-  font-size: ${(props) => props.customSize < 21 ? 7 : 16}px;
-  background-color: ${colors[0]};
+  font-size: ${(props) => (props.customSize < 21 ? 7 : 16)}px;
+  background-color: ${(props) => props.customColor};
+  color: rgba(0, 0, 0, 0.5);
+  font-weight: 500;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,7 +48,15 @@ export type Props = {
 }
 
 function Photo({ size = 32, user, onClick, className }: Props) {
-  const Element = () => <Container customSize={size} className={className}>{user.initials}</Container>
+  const Element = () => (
+    <Container
+      customSize={size}
+      customColor={getColorByInitials(user.initials)}
+      className={className}
+    >
+      {user.initials}
+    </Container>
+  )
 
   if (onClick) {
     return (

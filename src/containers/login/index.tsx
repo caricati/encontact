@@ -16,10 +16,10 @@ const Wrapper = styled.section`
 `
 
 const Box = styled.form`
-  width: 380px;
-  padding: 1rem;
+  width: 350px;
+  padding: 3rem;
   border-radius: 0.25rem;
-  background-color: ${(props) => props.theme.color.white};
+  background-color: ${(props) => props.theme.color.modalBox};
 `
 
 const InputText = styled(Input)`
@@ -27,7 +27,7 @@ const InputText = styled(Input)`
 `
 
 const SubmitButton = styled(Button)`
-  margin-top: 1.2rem;
+  margin-top: 2rem;
 `
 
 const ErrorMessage = styled.p`
@@ -36,6 +36,10 @@ const ErrorMessage = styled.p`
   background-color: ${(props) => props.theme.color.red};
   border-radius: .25rem;
   margin-top: 1rem;
+`
+
+const Heading = styled.h1`
+  margin-bottom: 2rem;
 `
 
 export default function Login() {
@@ -52,7 +56,7 @@ export default function Login() {
           action(username, password)
         }}
       >
-        <h1>{t('login')}</h1>
+        <Heading>{t('login')}</Heading>
         {store.auth.hasError && (
           <ErrorMessage>{t('invalidAccountMessage')}</ErrorMessage>
         )}

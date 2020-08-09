@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Row = styled.div``
 
 const Title = styled.h4`
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   margin-bottom: 0.3125rem;
 `

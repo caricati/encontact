@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import { Switch, Route } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
+// @ts-ignore
+import ResizePanel from 'react-resize-panel'
+
 import AsideMenu from './aside-menu'
 import MessagesList from './messages-list'
 import Button from '../../components/button'
@@ -14,13 +17,15 @@ import SwitchThemeMode from '../../components/switch-theme-mode'
 import { useArchiveMessages } from '../../actions/message'
 
 const Container = styled.section`
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 300px 1fr;
+  min-height: 100vh;
+  display: flex;
   align-items: stretch;
 `
 
 const Aside = styled.aside`
+  width:100%;
+  flex-grow: 1;
+  min-width: 300px;
   background-color: rgba(0, 0, 0, 0.05);
   border-right: 1px solid ${props => props.theme.color.gray};
 
@@ -33,7 +38,11 @@ const Aside = styled.aside`
   }
 `
 
-const Wrapper = styled.section``
+const Wrapper = styled.section`
+  background-color: ${props => props.theme.color.body};
+  flex-grow: 3;
+  flex-flow: row nowrap;
+`
 
 const HeaderSearch = styled.section`
   padding: 1.25rem;
@@ -47,6 +56,16 @@ const Options = styled.div`
   }
 `
 
+const SwitchContainer = styled.div`
+  & > * {
+    margin-left: 5px;
+  }
+`
+
+const SelectItemMessage = styled.p`
+  padding: 1.25rem;
+`
+
 function App() {
   const { t } = useTranslation()
   const archiveMessages = useArchiveMessages()
@@ -56,16 +75,18 @@ function App() {
   
   return (
     <Container>
-      <Aside>
-        <header>
-          <ProfileOptions />
-          <div>
-            <SwitchThemeMode />
-            <SwitchLanguage />
-          </div>
-        </header>
-        <AsideMenu />
-      </Aside>
+      <ResizePanel direction="e">
+        <Aside>
+          <header>
+            <ProfileOptions />
+            <SwitchContainer>
+              <SwitchThemeMode />
+              <SwitchLanguage />
+            </SwitchContainer>
+          </header>
+          <AsideMenu />
+        </Aside>
+      </ResizePanel>
       <Wrapper>
         <HeaderSearch>
           <InputSearch />
@@ -81,7 +102,7 @@ function App() {
         )}
         <Switch>
           <Route path="/messages/:id" component={MessagesList} />
-          <Route render={() => <p>{t('selectTheMenuItem')}</p>} />
+          <Route render={() => <SelectItemMessage>{t('selectTheMenuItem')}</SelectItemMessage>} />
         </Switch>
       </Wrapper>
     </Container>

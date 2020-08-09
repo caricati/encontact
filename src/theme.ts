@@ -9,6 +9,7 @@ export const lightMode = {
     inputBorder: '#ccc',
     red: '#e74c3c',
     body: '#fff',
+    modalBox: '#fff',
   }
 }
 
@@ -21,6 +22,7 @@ export const darkMode = {
     inputBorder: '#242b2a',
     red: '#e74c3c',
     body: '#343f3d',
+    modalBox: '#28302e',
   }
 }
 
